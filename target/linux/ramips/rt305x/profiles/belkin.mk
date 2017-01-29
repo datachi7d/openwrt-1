@@ -30,3 +30,16 @@ define Profile/F7C027/Description
 	Package set for Belkin F7C027 - Plug with soc_ap and a relay
 endef
 $(eval $(call Profile,F7C027))
+
+
+define Profile/F7C031
+	NAME:=Belkin F7C031
+	PACKAGES:=\
+		-kmod-usb-core -kmod-usb-dwc2 \
+		-kmod-ledtrig-usbdev
+endef
+
+define Profile/F7C027/Description
+	Package set for Belkin F7C031 - Zigbee gateway
+endef
+$(eval $(call Profile,F7C031))
