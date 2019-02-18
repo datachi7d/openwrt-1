@@ -124,6 +124,9 @@ get_status_led() {
 	f7c031)
 		status_led="$board:orange:status"
 		;;
+	f7c031)
+		status_led="$board:green:status"
+		;;
 	jhr-n805r|\
 	jhr-n926r|\
 	mlw221|\
