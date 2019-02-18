@@ -119,8 +119,13 @@ get_status_led() {
 	f5d8235-v2)
 		status_led="$board:blue:router"
 		;;
-	f7c027)
+	f7c027|\
+	f7c029|\
+	f7c031)
 		status_led="$board:orange:status"
+		;;
+	f7c031)
+		status_led="$board:green:status"
 		;;
 	hc5*61|\
 	jhr-n805r|\

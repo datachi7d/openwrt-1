@@ -1,0 +1,110 @@
+/dts-v1/;
+
+#include "rt5350.dtsi"
+
+/ {
+	compatible = "F7C031", "ralink,rt5350-soc";
+	model = "Belkin F7C029";
+
+	chosen {
+		bootargs = "console=ttyS1,57600";
+	};
+
+	gpio-leds {
+		compatible = "gpio-leds";
+
+		status {
+			label = "f7c029:green:status";
+			gpios = <&gpio0 1 1>;
+		};
+
+		orange {
+			label = "f7c029:orange:status";
+			gpios = <&gpio0 19 1>;
+		};
+
+		wifi {
+			label = "f7c029:amber:wifi";
+			gpios = <&gpio0 0 1>;
+		};
+
+		relay {
+			label = "f7c029:device:relay";
+			gpios = <&gpio0 18 0>;
+		};
+	};
+
+	gpio-keys-polled {
+		compatible = "gpio-keys-polled";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		poll-interval = <20>;
+
+		restore {
+			label = "restore";
+			gpios = <&gpio0 17 0>;
+			linux,code = <0x198>;
+		};
+
+		touch {
+			label = "touch";
+			gpios = <&gpio0 20 0>;
+			linux,code = <0>;
+		};
+	};
+};
+
+&spi0 {
+	status = "okay";
+
+	m25p80@0 {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		compatible = "jedec,spi-nor";
+		reg = <0>;
+		linux,modalias = "m25p80", "w25q128";
+		spi-max-frequency = <10000000>;
+
+		partition@0 {
+			label = "u-boot";
+			reg = <0x0 0x30000>;
+			read-only;
+		};
+
+		partition@30000 {
+			label = "u-boot-env";
+			reg = <0x30000 0x10000>;
+			read-only;
+		};
+
+		factory: partition@40000 {
+			label = "factory";
+			reg = <0x40000 0x10000>;
+			read-only;
+		};
+
+		partition@50000 {
+			label = "firmware";
+			reg = <0x50000 0xfb0000>;
+		};
+	};
+};
+
+&uart {
+	status = "okay";
+	pinctrl-names = "default";
+	pinctrl-0 = <&uartf_pins>;
+};
+
+&wmac {
+	ralink,mtd-eeprom = <&factory 0>;
+};
+
+&pinctrl {
+	state_default: pinctrl0 {
+		gpio {
+			ralink,group = "i2c" , "jtag";
+			ralink,function = "gpio";
+		};
+	};
+};

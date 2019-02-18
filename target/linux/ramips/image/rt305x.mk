@@ -236,6 +236,10 @@ Image/Build/Profile/F5D8235V2=$(call BuildFirmware/CustomFlash/$(1),$(1),f5d8235
 # 0x770000
 belkin_f7c027_mtd_size=7798784
 Image/Build/Profile/F7C027=$(call BuildFirmware/CustomFlash/$(1),$(1),f7c027,F7C027,$(belkin_f7c027_mtd_size))
+belkin_f7c029_mtd_size=16449535
+Image/Build/Profile/F7C029=$(call BuildFirmware/CustomFlash/$(1),$(1),f7c029,F7C029,$(belkin_f7c029_mtd_size))
+belkin_f7c031_mtd_size=16449535
+Image/Build/Profile/F7C031=$(call BuildFirmware/CustomFlash/$(1),$(1),f7c031,F7C031,$(belkin_f7c031_mtd_size))
 Image/Build/Profile/FONERA20N=$(call BuildFirmware/Edimax/$(1),$(1),fonera20n,FONERA20N,$(ralink_default_fw_size_8M),RSDK,NL1T,0x50000,0xc0000)
 Image/Build/Profile/RT-N13U=$(call BuildFirmware/Default8M/$(1),$(1),rt-n13u,RT-N13U)
 #Image/Build/Profile/HG255D=$(call BuildFirmware/Default16M/$(1),$(1),hg255d,HG255D)
