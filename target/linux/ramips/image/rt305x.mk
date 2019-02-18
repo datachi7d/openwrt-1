@@ -348,6 +348,22 @@ define Device/f7c027
 endef
 TARGET_DEVICES += f7c027
 
+define Device/f7c029
+  DTS := F7C029
+  IMAGE_SIZE := 16449535
+  DEVICE_TITLE := Belkin F7C029
+  DEVICE_PACKAGES := -kmod-usb-core -kmod-usb-dwc2 -kmod-usb-ledtrig-usbport
+endef
+TARGET_DEVICES += f7c029
+
+define Device/f7c031
+  DTS := F7C031
+  IMAGE_SIZE := 16449535
+  DEVICE_TITLE := Belkin F7C031
+  DEVICE_PACKAGES := -kmod-usb-core -kmod-usb-dwc2 -kmod-usb-ledtrig-usbport
+endef
+TARGET_DEVICES += f7c031
+
 define Device/fonera20n
   DTS := FONERA20N
   IMAGES += factory.bin
