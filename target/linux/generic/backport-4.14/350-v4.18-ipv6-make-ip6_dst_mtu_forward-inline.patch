@@ -9,7 +9,7 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
 
 --- a/include/net/ip6_route.h
 +++ b/include/net/ip6_route.h
-@@ -252,4 +252,26 @@ static inline bool rt6_duplicate_nexthop
+@@ -253,4 +253,26 @@ static inline bool rt6_duplicate_nexthop
  	       ipv6_addr_equal(&a->rt6i_gateway, &b->rt6i_gateway) &&
  	       !lwtunnel_cmp_encap(a->dst.lwtstate, b->dst.lwtstate);
  }
@@ -38,7 +38,7 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
  #endif
 --- a/include/net/ipv6.h
 +++ b/include/net/ipv6.h
-@@ -889,8 +889,6 @@ static inline struct sk_buff *ip6_finish
+@@ -860,8 +860,6 @@ static inline struct sk_buff *ip6_finish
  			      &inet6_sk(sk)->cork);
  }
  
